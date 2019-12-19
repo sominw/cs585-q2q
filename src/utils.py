@@ -17,6 +17,11 @@ import torch.nn as nn
 from torch import optim
 import torch.nn.functional as F
 
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+
+SOS_token = 0
+EOS_token = 1
+
 class Lang:
     def __init__(self, name):
         self.name = name
@@ -93,13 +98,6 @@ def tensorFromSentence(lang, sentence):
     indexes.append(EOS_token)
     return torch.tensor(indexes, dtype=torch.long, device=device).view(-1, 1)
 
-
-def tensorsFromPair(pair):
-    input_tensor = tensorFromSentence(input_lang, pair[0])
-    target_tensor = tensorFromSentence(output_lang, pair[1])
-    return (input_tensor, target_tensor)
-
-
 def asMinutes(s):
     m = math.floor(s / 60)
     s -= m * 60
@@ -125,4 +123,22 @@ def showPlot(points):
     fig.savefig('loss_curve.png', format='png', dpi=300)
     
 
+def showAttention(input_sentence, output_words, attentions):
+    # Set up figure with colorbar
+    fig = plt.figure(figsize=(10,10))
+    ax = fig.add_subplot(111)
+    cax = ax.matshow(attentions.numpy(), cmap='Greys')
+    fig.colorbar(cax)
+#    print (attentions[:,:15].size())
+    # Set up axes
+    ax.set_xticks(np.arange(len(input_sentence.split(' '))))
+    ax.set_yticks(np.arange(len(output_words)))
+    ax.set_xticklabels([''] + input_sentence.split(' ') +
+                       ['<EOS>'], rotation=90)
+    ax.set_yticklabels([''] + output_words)
 
+    # Show label at every tick
+    ax.xaxis.set_major_locator(ticker.MultipleLocator(1))
+    ax.yaxis.set_major_locator(ticker.MultipleLocator(1))
+    fig.savefig('attn_ex.png', format='png', bbox_inches='tight', dpi=300)
+    plt.show()
