@@ -1,6 +1,3 @@
-# Executed Here: https://colab.research.google.com/drive/1-iY4pPfOStBh4AeRWp_xpwLAujXbCoEM
-
-
 from __future__ import unicode_literals, print_function, division
 from io import open
 import unicodedata
