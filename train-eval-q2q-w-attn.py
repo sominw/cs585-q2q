@@ -8,7 +8,6 @@ import time
 import math
 
 import matplotlib.pyplot as plt
-plt.switch_backend('agg')
 import matplotlib.ticker as ticker
 import numpy as np
 
@@ -18,14 +17,26 @@ import torch.nn as nn
 from torch import optim
 import torch.nn.functional as F
 
-from utils import Lang, prepareData, normalizeString, unicodeToAscii, readLangs
-from utils import prepareData, indexesFromSentence, tensorFromSentence, tensorsFromPair
-from utils import asMinutes, timeSince, showPlot
+import utils.Lang as Lang
+import utils.prepareData as prepareData
+import utils.normalizeString as normalizeString
+import utils.unicodeToAscii as unicodeToAscii
+import utils.readLangs as readLangs
+import utils.indexesFromSentence as indexesFromSentence
+import utils.tensorFromSentence as tensorFromSentence
+import utils.tensorsFromPair as tensorsFromPair
+import utils.asMinutes as asMinutes
+import utils.timeSince as timeSince
+import utils.showPlot as showPlot
 
-from encoder-decoder import EncoderRNN, DecoderRNN, AttnDecoderRNN
+import encoderdecoder.EncoderRNN as EncoderRNN
+import encoderdecoder.DecoderRNN as DecoderRNN
+import encoderdecoder.AttnDecoderRNN as AttnDecoderRNN
 
 
 MAX_LENGTH = 25
+SOS_token = 0
+EOS_token = 1
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 print (torch.cuda.get_device_name(0))
 
@@ -176,6 +187,12 @@ def evaluateRandomly(encoder, decoder, n=5):
         print('predicted', output_sentence)
         print('')
 
+def evaluateAndShowAttention(input_sentence):
+    output_words, attentions = evaluate(
+        encoder1, attn_decoder1, input_sentence)
+    print('input =', input_sentence)
+    print('output =', ' '.join(output_words))
+    showAttention(input_sentence, output_words, attentions)
 
 input_lang, output_lang, pairs = prepareData()
 print(random.choice(pairs))
