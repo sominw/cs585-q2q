@@ -2,7 +2,7 @@
 
 Code can be found at: [https://github.com/sominwadhwa/cs585-q2q](https://github.com/sominwadhwa/cs585-q2q)
 
-This repository contains all the code written for the final project of COMPSCI 585: Intro to Natural Language Processing (Mohit Iyyer) in the Fall 2019.
+This repository contains all the code written for the final project of `COMPSCI 585: Intro to Natural Language Processing (Mohit Iyyer)` in the Fall 2019.
 
 **Authors**: Thivakkar Mahendran, Vincent Pun, Kathryn Ricci, Apurva Bhandari, Somin Wadhwa
 
