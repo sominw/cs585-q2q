@@ -10,6 +10,8 @@ This repository contains all the code written for the final project of `COMPSCI 
 
 **Authors**: Thivakkar Mahendran, Vincent Pun, Kathryn Ricci, Apurva Bhandari, Somin Wadhwa
 
+**Abstract**: BERT can be fine-tuned to build question answering systems and systems for various other NLP tasks. However, BERT is unable to provide answers to queries search engine users typically input, which are usually brief or fragmented sentences. To address this problem, we propose a two pronged approach: 1) fine-tuning the BERT QA model on queries 2) developing an NMT model to convert queries to questions, which are then used as input to the standard BERT QA model.
+
 ## Pre-requisites
 
 The following are a couple of instructions that must be gone through in order to execute different (or all) sections of this project.
