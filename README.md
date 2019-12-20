@@ -33,5 +33,35 @@ To deactivate later, once you're done with the project, just type ``deactivate``
 
 You should see a message - ``Imports successful. Good to go!``
 
+## Directory Structure
+
+#### Top-Level Structure:
+
+    .
+    .
+    ├── data                     # Data used and/or generated
+    │   ├── dev_q2d.txt
+    │   ├── train_q2d.txt
+    │   ├── google_queries.txt
+    │   ├── squad_queries.txt
+    │   ├── hotpot_queries.txt
+    ├── preprocessing-src                     # Source Files
+    │   ├── __init__.py
+    │   ├── get_context.py
+    │   ├── preprocess.py
+    ├── src                    # Main source files for training
+    │   ├── __init__.py
+    │   ├── encoderdecoder.py
+    │   ├── failure-analysis-ids.py
+    │   ├── keras-nmt-baseline-wo-attn.py
+    │   ├── train-eval-q2q-w-attn.py     
+    ├── attn_ex (<num>).png 
+    ├── attn_ex_sp<num>.png
+    ├── loss_curve.png                  
+    ├── LICENSE
+    └── README.md
+    .
+    .
+
 
 
