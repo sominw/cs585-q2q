@@ -1,4 +1,4 @@
-# Q2Q: Improving Relevance of Responses for Query Inputs
+# Improving Relevance of QA Responses for Query Inputs
 
 Code can be found at: [https://github.com/sominwadhwa/cs585-q2q](https://github.com/sominwadhwa/cs585-q2q)
 
